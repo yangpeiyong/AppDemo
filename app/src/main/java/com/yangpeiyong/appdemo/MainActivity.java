@@ -21,6 +21,7 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
@@ -43,16 +44,17 @@ public class MainActivity extends AppCompatActivity {
 
         RestClient.api().articles(10,20).enqueue(new Callback<ReceiveData.ArticleListResponse>() {
             @Override
-            public void onResponse(Response<ReceiveData.ArticleListResponse> response) {
+            public void onResponse(Call<ReceiveData.ArticleListResponse> call, Response<ReceiveData.ArticleListResponse> response) {
                 articleInfoList = response.body().results;
                 articleAdapter.notifyDataSetChanged();
             }
 
             @Override
-            public void onFailure(Throwable t) {
+            public void onFailure(Call<ReceiveData.ArticleListResponse> call, Throwable t) {
                 Toast.makeText(MainActivity.this,t.getMessage(),Toast.LENGTH_SHORT).show();
             }
         });
+
     }
 
     private class ArticleAdapter extends BaseAdapter {
