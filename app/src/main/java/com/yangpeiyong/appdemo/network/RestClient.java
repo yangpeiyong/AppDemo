@@ -10,11 +10,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RestClient {
     private static final String BASE_URL= "http://gank.avosapps.com/api/data/";
     private static RestClient instance = new RestClient();
-    private  static ApiService api;
+    private ApiService api;
 
     private RestClient(){
         OkHttpClient okHttpClient = new OkHttpClient();
-       // okHttpClient.networkInterceptors().add(new AddHeaderInterceptor());
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .client(okHttpClient)
@@ -26,6 +25,6 @@ public class RestClient {
     }
 
     public static ApiService api(){
-        return api;
+        return instance.api;
     }
 }
