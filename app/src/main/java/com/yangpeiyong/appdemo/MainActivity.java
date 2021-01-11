@@ -1,6 +1,5 @@
 package com.yangpeiyong.appdemo;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,8 +17,9 @@ import com.yangpeiyong.appdemo.network.RestClient;
 import com.yangpeiyong.appdemo.utils.ViewHolder;
 
 import java.util.List;
+import androidx.appcompat.app.AppCompatActivity;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -27,7 +27,7 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-    @Bind(R.id.listView)
+    @BindView(R.id.listView)
     ListView listView;
 
     List<ArticleInfo> articleInfoList;
